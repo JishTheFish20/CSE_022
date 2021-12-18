@@ -1,0 +1,33 @@
+Lab 9 - Data Processing
+
+Instructions
+
+In this lab we will be working with a financial statement from a fictional entity. The data is provided in CSV format as follows: [date,product,amount]. Here is an excerpt:
+
+2021-11-22 03:54:32,Milk - Homo,$97.73
+2021-11-21 01:24:00,Scampi Tail,$61.83
+As you can see the date is in the form YYYY-MM-DD hh:mm:ss, the product description is any string, and the amount always begins with a $.
+
+Tasks
+Create a function with signature:
+def readFromFile(filename):
+which should take in a filename and read the data into a list of tuples of the form (date(string), product (string), amount (float)). For example, excerpt data above should be:
+
+[("2021-11-22 03:54:32" , "Milk - Homo", 97.73), ("2021-11-21 01:24:00", "Scampi Tail", 61.83)]
+
+Create a function with signature:
+def total(data):
+where the data parameter is a list like the one returned by your function in exercise 1. The total function should add up all the amounts and return the answer as a float, rounded to 2 decimal places.
+
+For example, the excerpt list above should add up to 161.56.
+
+Create a function with signature:
+def daily(data):
+where data is a list like the one returned in exercise 1. This function should add up the total amounts for each day, and return a list of the form (day, amount). For example the excerpt data above will result in:
+
+[("2021-11-21", 61.83), ("2021-11-22", 97.73)]
+The list must be sorted according to date from earliest to latest. Note that if there was another transaction on "2021-11-21", that amount would have been added to the 61.83.
+
+Create a function with signature:
+def productsOnDay(data, day):
+The data parameter is a list like the one returned in exercise 1, and day is a date of the form "YYYY-MM-DD". Your function should return a list of products purchased on the date given. The list should be a list of strings, and should have no duplicates.

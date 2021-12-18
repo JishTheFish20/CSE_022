@@ -1,0 +1,6 @@
+Alice,43,54,61
+Bob,51,54,53
+Cecilia,85,81,91
+David,56,64,67
+Elizabeth,87,98,81
+Frank,41,55,43

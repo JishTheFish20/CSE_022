@@ -1,0 +1,29 @@
+Lab 8 - Complexity Analysis
+
+Instructions
+
+In your home folder create a folder called assignment_8 and create a file called lab8.txt in the assignment_8 folder.
+
+This lab assignment has no programming questions, and therefore no automated grading. When you submit, you will receive no feedback.
+
+In the text file you created, answer the following questions:
+
+Write the conditions that must be satisfied in order for a complexity function f(n) to belong to O(n^2).
+
+Show that 2n^2 + 5n + 7 is in O(n^2)
+
+Show that 5n + 3 is in O(n)
+
+Is it true that 5n + 3 is in O(n^2)? Prove it.
+
+Describe the linear search algorithm. You can write pseudo code with a description of what the different parts of the algorithm are doing.
+
+Derive a complexity function for linear search, and prove its order of complexity.
+
+Describe the selection sort algorithm in your own words. Pseudo code is acceptable but every part of it must be described.
+
+Derive and prove the order of complexity of selection sort.
+
+Explain the idea behind insertion sort. How does the algorithm work?
+
+Explain the idea behind binary search. What it its order of complexity?

@@ -1,0 +1,96 @@
+Lab 6 - Working with Lists
+Due:
+Sunday, Oct 31 at 11:59 PM
+
+Instructions
+
+Create a folder called assignment_6 and inside it, create a file called lab6.py, which is where you will complete the following exercises. You can use this template as a starting point:
+
+def maxInRange(someList, start, end):
+    return 0
+
+def minInRange(someList, start, end):
+    return 0
+
+def elementCounter(someList, element):
+    return 0
+
+def elementPos(someList, element):
+    return []
+
+def ranges(sortedList):
+    return []
+
+
+def occupySlot(sequence):
+    return []
+
+def setMismatch(someList):
+    return (0, 0)
+
+
+
+
+if __name__ == "__main__":
+    print (maxInRange([1,2,3,4,5,6,7,8], 1, 3))         # 4
+    print (maxInRange([1,20,3,4,5,6,7,8], 1, 3))        # 20
+
+    print (minInRange([1,2,3,4,5,6,7,8], 1, 3))         # 2
+    print (minInRange([1,0,3,4,5,6,7,8], 1, 3))         # 0
+    print (minInRange([1,0,3,-1,5,6,7,8], 1, 3))        # -1
+
+    print (elementCounter([1,3,1,4,1,5,1,6,1,7], 1))    # 5
+    print (elementPos([1,3,1,4,1,5,1,6,1,7], 1))        # [0, 2, 4, 6, 8]
+
+    print (ranges([0,1,2,4,5,7]))                       # [(0, 2), (4, 5), (7, 7)]
+    print (ranges([1,2,3,4,5,6,7,8]))                   # [(1, 8)]
+    print (ranges([0,2,3,4,6,8,9]))                     # [(0, 0), (2, 4), (6, 6), (8, 9)]
+    print (ranges([]))                                  # []
+    print (ranges([4]))                                 # [(4, 4)]
+
+    print (occupySlot([0,1,1,0,0]))                     # [0, 1, 1, 0, 1]
+    print (occupySlot([0,0,0,0,0]))                     # [1, 0, 1, 0, 1]
+    print (occupySlot([0,1,0,0,0]))                     # [0, 1, 0, 1, 0]
+
+    print (setMismatch([1,1]))                          # (1, 2)
+    print (setMismatch([1,2,2,4]))                      # (2, 3)
+    print (setMismatch([1,2,3,4,5,9,7,8,9,10]))         # (9, 6)
+1. Finding Maximum
+
+Implement the maxInRange function. It should take in a list of integers, a starting position and an ending position. The function should return the value of the largest element within the specified range.
+
+2. Finding Minimum
+
+Similarly to exercise 1 above, take in a list and a range specified by two integers, and return the smallest value in the range. This should be in the minInRange function.
+
+3. Counting Element Occurrences
+
+In the function elementCounter take in a list of integers, and another integer. Return the number of times the integer in the second parameter appears in the list.
+
+4. Finding All Positions
+
+Similarly to exercise 3 above, your elementPos function should take in a list and a value, but this time return a list of all the positions where the value appears.
+
+5. Ranges
+
+Compression of data is an important area in Computer Science. In this exercise we will implement a compression scheme for storing lists of integers. Given any list of integers, instead of listing all its elements sequentially, we can represent the list as a set of ranges.
+
+For example, the list [1, 2, 3, 4, 5] is simply the range (1, 5). Whereas the list [1, 2, 4, 5] has a discontinuity (it's missing the 3), so it can be represented by 2 ranges, namely (1, 2) and (4, 5).
+
+Implement this scheme in your ranges function. Look at the template file for more examples.
+
+6. Non adjacent occupancy
+
+Suppose there is a row of seats in a theater where some seats are occupied and some are empty. Your task is to assign the empty seats to visitors in such a way that when a visitor is placed in an empty seat, the adjacent seats must be empty.
+
+The row of seats is represented by a list of 0s and 1, where a 0 means the seat is empty, and 1 means the seat is occupied.
+
+Your ranges function should take in a list of 0s and 1s representing the initial conditions of the row. Your task is to seat as many people as possible on that row,
+ and return the final configuration (updated list of 0s and 1s). Look at the template file for examples.
+
+7. Data Recovery
+
+Suppose we are given a list of n integers. Originally the list contained all integers from 1 to n, but due to some transmission error,
+ one of the elements in the list got overwritten by another element from the list,
+ so now one number is duplicated and one number is missing. Your task is to find these two values and return them,
+ as specified in the examples in the template file. This exercise should be implemented in the setMismatch function.

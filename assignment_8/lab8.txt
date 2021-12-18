@@ -1,0 +1,58 @@
+1.A program that takes O(n^2) time is a for loop with a nested for loop that goes through a list of length n. This is, because the first for loop goes through the entire length of the list and the nested for loop goes through the entire list each time the unnested for loop goes through an iteration. Which means that you will take the length of the outside for loop and multiply it by the length of the inside for loop which will give you O(n^2)
+
+2.2n^2 + 5n + 7 is O(n^2), because
+    kn^2 >= 2n^2 + 5n + 7 for all values of n > n(initial)
+    let k = 4
+    
+    4n^2 >= 2n^2 + 5n + 7
+
+    simplify
+
+    2n^2 >= 5n + 7
+
+    thus for all values of n > 1 this statement holds true which allows us to say that 2n^2 + 5n + 7 belongs to /in O(n^2)
+
+3.5n + 3 is in O(n)
+    kn >= 5n + 3 for all values of n > n(initial)
+    let k = 8
+    
+    8n >= 5n + 3
+
+    3n + 5n >= 5n + 3
+
+    simplify
+
+    3n >= 3
+
+    thus for all values of n > 1 this statement holds true which allows us to say that 5n + 3 belongs to /in O(n)
+
+4.yes this is true,5n + 3 is in O(n^2)
+    kn^2 >= 5n + 3 for all values of n > n(initial)
+    let k = 2
+    
+    2n^2 >= 5n + 3
+
+    thus for all values of n > 1 this statement holds true which allows us to say that 5n + 3 belongs to /in O(n^2)
+
+5.The linear search algorithm is when you are given a value in a list which you need to find and you find that value by starting at the beginning of the list and then moving up the list one by one until you find that value, where you will then return the index the value is stored at.
+    CODE:
+        list = [1,2,3,4,5,6,7,8,9,10]
+        index = 0
+        x = input("What value are you searching for? ")
+        for(i in list):
+            if(i == x):
+                break
+            elif(i+1 == len(list)):
+                return "your value is not within this list"
+        return index
+
+6.The complexity of linear search is O(n), because the search will only have to go through the list once in order to find the value and will stop once it finds the value its searching for , so if the first index has the value we are searching for then the complexity will be O(1), however, there is also a worst case scieneraio if the value we are searching for is at the end of the list or does not exist then we will have to search the entire list in order to know that information meaning we will have to do n comparisions and since we mainly base our time compledxity on the worst case scinero our time complexity will be O(n)
+
+7.Selection sort works by going through the list from the start to find the lowest value and then swapping the index of the lowest value with the value in the first position of the list. It then starts again this time from the 2nd index in the list,because we know that we already sorted the first index and finding the lowest value then swapping the index of the lowest value with that of the value in index 2 which means that index 1 and 2 are sorted, This process of finding the lowest value then swapping that value with that of the value at the beginning of the index, but making sure not to mess with the part of the list we already know is sorted which is the value that we have placed at the beginning, Then after you find that there is only one value left in the index you know its sorted.
+
+8.The time complexity of selection sort is O(n^2), because selection sort requires that you go through a list n times and then subtract the length of the list you are checking by 1 each time meaning you check n! times. (n)+(n-1)+(n-2) + etc.... which would equal (n^2-n)/2, but since we are using big O notation we go with the highest factor which is n^2.
+
+9.Insertion sort works by splitting a list into two sections a sorted section and an unsorted section. We start by comparing the first two index's and moving the smaller one to the left, once we have switched the smaller value to the left we then make that index the starting section of our sorted list which we will add onto as we go through the rest of the list. Next we compare the first two index's of the unsorted section again moving the lower value to the left and checking itself with all the values in the sorted section moving left if its value is lower until it cannot move left anymore then it stays put and is added to the sorted section. This process continues on until the all of the unsorted section is part of the sorted section. 
+
+10.Binary search is a fast way of finding a value in a sorted list. This is done by starting at the middle of a list and if there is no middle then you start at the lower half of the list. you then check to see if the value you are searching for is greater or lower then the one in the middle index if its greater then you will look at the section of the list right of the index you compared your number with and find the middle index of that section then again check to see if the value you are searching for is higher or lower, this time lets say your value is lower then the selected index value that means we look towards the section of the list to the left of the last middle index and making sure not to include any numbers that were not included in the previous comparssion. We take this section and find the middle index, but we find that the number we are searching for is the same as the value in the middle index which means we have found the location of the number we were looking for. 
+    The time complexity of this function is O(log(n)), because we are dividing the length of the list we are searching by 2 every time we make a comparison. For example starting with a list of length 8 which we then split into 4 with the first comparsion, then 2 after the second comparsion and finally 1 where we find our value. log(n) is the inverse of 2^x

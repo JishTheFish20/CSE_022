@@ -1,0 +1,249 @@
+Lab 7 - List Algorithm
+
+Instructions
+
+Create a folder called assignment_7 and inside it, create a file called lab7.py, which is where you will complete your exercises exercises. Also create a file called grades.txt and paste the following content in it (it will be used in exercise 5 below):
+
+Alice,43,54,61
+Bob,51,54,53
+Cecilia,85,81,91
+David,56,64,67
+Elizabeth,87,98,81
+Frank,41,55,43
+As for your lab7.py file, you can paste the following as a starting template:
+
+# Exercise 1
+def heading(title, max_width=80, min_padding=4):
+    return "--"
+
+# Exercise 2
+def summarizeFines(fines):
+    return []
+
+# Exercise 3
+def findHighestDebtor(fines):
+    return ""
+
+# Exercise 4
+def optimizeContainer(total, packages):
+    return ()
+
+# Exercise 5
+def dropLowestGrade(filename):
+    return []
+
+# Exercise 6
+def averageGrade(gradeList):
+    return []
+
+# This function displays a list of pairs as neat columns, it is for output only
+def neatPair(listOfPairs):
+    if len(listOfPairs) > 0:
+        m = len(listOfPairs[0][0])
+        for i in listOfPairs:
+            if len(i[0]) > m:
+                m = len(i[0])
+        m += 2
+        for i in listOfPairs:
+            c = len(i[0])
+            print(i[0], (" " * (m-c)), i[1])
+
+if __name__ == "__main__":
+    print(heading("Heading Test"))
+    print(heading(""))
+    print(heading("1"))
+    print(heading("10"))
+    print(heading("101"))
+    print(heading("*" * 70))
+    print(heading("*" * 71))
+    print(heading("*" * 69))
+    print()
+
+    print(heading("Fines Summary"))
+    fines = [["Jim", 100], ["Jeff", 75], ["Jane", 80], ["Juan", 110], ["Jim", 20]]
+    print(fines)
+    print(summarizeFines(fines))
+    print()
+
+    print(heading("Highest Debtor"))
+    print(fines)
+    print(findHighestDebtor(fines))
+    print()
+
+    print(heading("Container Optimization"))
+    weights = [("Alice", 100), ("Bob", 233), ("Cecilia", 120), ("David", 130), ("Elizabeth", 95), ("Frank", 180)]
+    print(weights)
+    print(optimizeContainer(300, weights))
+    print()
+
+    print(heading("Drop Lowest Grade"))
+    newGrades = dropLowestGrade("grades.txt")
+    neatPair(newGrades)
+    print()
+
+    print(heading("Average Grades"))
+    averages = averageGrade(newGrades)
+    neatPair(averages)
+Tasks
+1. Printing Headings
+
+In command line applications, such as the ones we are writing, it is common to create headings like these:
+
+------ Cool Stuff ------
+
+Some cool stuff here...
+
+--------- Car ----------
+
+Some other stuff here
+The headings should appear in such a way that the given title is centered in some space and it is surrounded by a number of dashes (-) on each side, so that the ends are always aligned.
+
+In the example above the headings are always 24 characters long, the title is centered as much as possible, which is to say that it has a space immediately before and after it. If there is enough space for the same number of dashes on each side, then there should be the same number of dashes on each side (the remaining space after the title is divisible by 2). If that is not the case, then the right side should have one more than the left, as shown above.
+
+Sometimes headings are too long, so we adopt the following abbreviation scheme. There must be a minimum number of dashes (padding) on each side of the title. If it is too long to fit in the maximum allowable space, then it should be truncated at a point so it and an ellipsis (...) can fit exactly in the max_space allowed, including the padding.
+
+For example: if the title is Some long title and the maximum space is 20, and the minimum padding is 4 (meaning we need at least 4 dashes on each side of the title), then we would end up with this:
+
+---- Some long title ----
+which is 25 characters long, and it does not fit in the maximum space of 20. We need to therefore remove some characters from the title, so that there will be enough space to fit the ... and still fit inside a limit of 20 characters. This results in:
+
+---- Some lo... ----
+Your function signature is:
+
+def heading(title, max_width=80, min_padding=4):
+note the use of default parameters above. The max_width parameter defaults to 80, and min_padding defaults to 4, so when you call your function, you don't need to provide values for those parameters. If you do, then the ones you provide will be used, but if you don't then the function will use the default values specified above.
+
+2. Summary Of Fines
+In this exercise we are given a list of fines that people owe. Each item in the list is itself a list containing a name represented by a string, and an amount, represented by an integer. For example:
+
+[["Jim", 100], ["Jeff", 75], ["Jane", 80], ["Juan", 110], ["Jim", 20]]
+In the list above we see the first item is ["Jim", 100] which indicates that Jim owes 100, and so on. Some individuals appear in the list more than once. For instance Jim appears in the first and in the last position of the list, meaning that he owes 120.
+
+Given a generalized list like the one described above, produce a summarized version of the list where individuals with multiple fines in the original list are grouped as one item in the resulting list. The result for the above example will therefore be:
+
+[["Jim", 120], ["Jeff", 75], ["Jane", 80], ["Juan", 110]]
+Your function signature should be:
+
+summarizeFines(fines)
+where fines is a list like the one described in the example above. The function should return the summarized list as described in the example.
+
+3. Adding up debts
+
+In this exercise we are given a list structured similarly to the one in the last exercise. Each item of the list is itself a list made up of 2 elements, a name, and an amount. Each item represents a debtor (person who owes money) and the amount they owe. Some people have multiple debts listed.
+
+Your task is to find the person who owes the most and return their name.
+
+The function signature should be:
+
+def findHighestDebtor(debts):
+It takes in a list of the form described above and returns a string.
+
+4. Optimal Container Loading
+
+Freight companies ship goods around the world in containers. Each container is rated for a specific weight limit and there is a fixed cost for shipping the container. For example, if a container is rated for 1000 lbs. that is the price you pay, even if you have loaded it with less weight.
+
+In this exercise we are given a specific container weight limit, and a list of customers. For each customer, we have their name and the weight of the goods they wish to ship. For example:
+
+('Alice', 100), ('Bob', 233), ('Cecilia', 120), ('David', 130), ('Elizabeth', 95), ('Frank', 180)
+Given a container limit of 300, we notice that if any of the customers takes the container alone, there would be a significant amount of space left over. It is therefore prudent for two customers to try and team up so that they can each save on the shipping cost. In this case if Cecilia and Frank teamed up together, they would fill up the container exactly.
+
+Given a container weight limit, and a list of customers as above, find the pair of customers that would fill the container. Your function signature should be:
+
+def optimizeContainer(limit, customerList):
+The limit variable is the weight limit of the container, and the customerList variable is the list of customers as described above.
+
+5. Grade Processing
+
+In this exercise we will be reading in the grades.txt file that you created at the beginning of this assignment. The file contains similarly formatted lines (CSV format), where each line has a name followed by a number of integers, all separated by comma. The integers following each name make up a list of grades for that person.
+
+Your task is to read the contents of this file, and produce a new gradeList with the lowest of the grades dropped. You can assume that there will always be at least 2 grades for each name, and that there will be the same number of grades for each name.
+
+Your function signature should be as follows:
+
+def dropLowestGrade(filename):
+where filename is the name of the file where the grade information is stored, in this case grades.txt.
+
+The function should return a list where each element of the list is a tuple. The first element of the tuple should be the person's name, and the second element of the tuple should be a list of grades, with the lowest grade dropped and the order of the other grades preserved.
+
+The expected output from the example grades.txt file is:
+
+[('Alice', [54, 61]), ('Bob', [54, 53]), ('Cecilia', [85, 91]), ('David', [64, 67]), ('Elizabeth', [87, 98]), ('Frank', [55, 43])]
+As an example the grades of Alice were originally [43,54,61] but we have dropped the lowest one, so now she has [54, 61].
+
+Hints:
+To read the contents of the text file into a list of strings, where each list element corresponds to a line in the file, you can use the code:
+
+f = open(filename, "r")
+lines = f.readlines()
+f.close()
+The filename variable is the string representing the name of the file. After this is executed, the lines variable will be a list where every element is a string, corresponding to the lines in the file.
+
+The above code snippet just assumes that whatever filename you gave actually exists, so make sure you give it correct file names when you test. You can assume that we will give it correct file names when we test.
+
+6. Average Grades
+
+Taking the result of the function from exercise 5, compute the average grade for each person, and return the result as a list where each element is a tuple made up of two items, the person's name and their average grade.
+
+For example, if the input is:
+
+[('Alice', [54, 61]), ('Bob', [54, 53]), ('Cecilia', [85, 91]), ('David', [64, 67]), ('Elizabeth', [87, 98]), ('Frank', [55, 43])]
+Then the output should be:
+
+[('Alice', 57.5), ('Bob', 53.5), ('Cecilia', 88.0), ('David', 65.5), ('Elizabeth', 92.5), ('Frank', 49.0)]
+The function signature should be:
+
+def averageGrade(gradeList):
+7. Unit Testing
+
+Create a file called test_lab.py and write unit tests for each of the functions you have. If you have defined helper functions for any of the exercises above, write unit tests for them too.
+
+8. Complexity Analysis
+
+Create a file called complexity.txt. For the functions you wrote in exercise 2 and exercise 4 derive their time complexity functions as we have done in class. Fully explain your derivation process. Also, explain if there are best/worst case scenarios for both.
+
+9. Honor Pledge
+
+Create a file called honor_pledge.txt. In it manually type the following text (do not copy paste it):
+
+I affirm that I have not given or received any unauthorized help on this assignment, and that this work is my own.
+Summary
+Make sure all the required files are in your folder before you submit.
+
+The sample lab7.py file produces the following output when all functions have been implemented correctly:
+
+--------------------------------- Heading Test ---------------------------------
+--------------------------------------------------------------------------------
+-------------------------------------- 1 ---------------------------------------
+-------------------------------------- 10 --------------------------------------
+------------------------------------- 101 --------------------------------------
+---- ********************************************************************** ----
+---- *******************************************************************... ----
+---- ********************************************************************* -----
+
+-------------------------------- Fines Summary ---------------------------------
+[['Jim', 100], ['Jeff', 75], ['Jane', 80], ['Juan', 110], ['Jim', 20]]
+[['Jim', 120], ['Jeff', 75], ['Jane', 80], ['Juan', 110]]
+
+-------------------------------- Highest Debtor --------------------------------
+[['Jim', 100], ['Jeff', 75], ['Jane', 80], ['Juan', 110], ['Jim', 20]]
+Jim
+
+---------------------------- Container Optimization ----------------------------
+[('Alice', 100), ('Bob', 233), ('Cecilia', 120), ('David', 130), ('Elizabeth', 95), ('Frank', 180)]
+('Cecilia', 'Frank')
+
+------------------------------ Drop Lowest Grade -------------------------------
+Alice        [54, 61]
+Bob          [54, 53]
+Cecilia      [85, 91]
+David        [64, 67]
+Elizabeth    [87, 98]
+Frank        [55, 43]
+
+-------------------------------- Average Grades --------------------------------
+Alice        57.5
+Bob          53.5
+Cecilia      88.0
+David        65.5
+Elizabeth    92.5
+Frank        49.0

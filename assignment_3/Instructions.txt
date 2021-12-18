@@ -1,0 +1,141 @@
+Lab 3 - Decisions
+
+Instructions
+
+Create a folder called assignment_3 in your home directory. All work for this lab assignment should be completed inside this folder.
+
+Create a file called lab3.py which is where you will be asked to define some functions. You may also create a driver program that calls your functions for live testing purposes.
+
+Create the following functions in your lab3.py file:
+
+1. Wage calculator
+
+Define a function with the following signature:
+
+def wages(hours, rate):
+which calculates the wages owed to an employee who has worked a given number of hours and is paid at a given rate. According to policy, the company pays 1.5x the rate for every hour above 40 that the employee worked.
+
+Sample Input
+34, 18
+
+Sample Output
+612
+
+2. Blood donation compatibility
+
+Define a function with the following signature:
+
+def canDonateBlood(donor, recipient):
+Given a donor's blood type, and a recipient's blood type, your function should return True if the donation is safe, and False otherwise. Use the following information to determine whether a blood donation is safe.
+
+There are 4 blood types, namely "A", "B", "AB", and "O". Only the strings "A", "B", "AB", and "O" are valid inputs for the function.
+
+People with blood type "A" can donate to people with "A" or "AB";
+
+People with blood type "B" can donate to people with "B" or "AB";
+
+People with blood type "AB" can only donate to people with "AB";
+
+People with blood type "O" can donate to anyone.
+
+Sample Input
+"O", "AB"
+
+Sample Output
+True
+
+3. Leap years
+
+Define a function with the following signature:
+
+def leap(year):
+which returns True if the given year is leap, and False otherwise.
+
+Use the following rules to determine whether a year is leap.
+
+For a year to be leap, it must be divisible by 4 but it should not be divisible by 100, unless it is also divisible by 400.
+
+Examples
+
+The year 2020 is divisible by 4 (2020/4 = 505). It is not divisible by 100 (2020/100 = 20.2) so it is a leap year
+
+The year 2000 is divisible by 4 (2000/4 = 500). It is also divisible by 100 (2000/100 = 20) but it is also divisible by 400 (2000/400 = 5) so it is a leap year.
+
+The year 1900 is divisible by 4 (1900/4 = 475). It is also divisible by 100 (1900/100 = 19) however it is not divisible by 400 (1900/400 = 4.75) so it is not a leap year.
+
+The year 2019 is not divisible by 4 (2019/4 = 504.75) so it is not a leap year. There is no need to check for the other conditions.
+
+4. Number of days in a month
+
+Define a function with the following signature:
+
+def daysInMonth(month, year):
+Given a month (1-12) and a year, your function should return the number of days in that month. Pay attention to the fact February has a different number of days depending on whether or not it is a leap year.
+
+Sample Input
+1, 2021
+
+Sample Output
+31
+
+5. Point in rectangle
+
+Define a function with the following signature:
+
+def pointInRect (x, y, rx, ry, rw, rh):
+In the function above the first two parameters x and y represent the coordinates of the point being tested. The next 4 parameters denote a rectangle, where rx and ry represent the coordinates if the top-left corner of the rectangle. The variable rw is the width of the rectangle, and rh is the height.
+
+Your function should return True if the point represented by x and y falls inside (including on the edges) of the rectangle represented by rx, ry, rw, and rh. Conversely your function should return False if the point is not inside the rectangle.
+
+Sample Input
+3, 3, 1, 5, 5, 3
+
+Sample Output
+true
+
+6. Rectangle in rectangle
+
+Define a function with the following signature:
+
+def rectInRect(x1, y1, w1, h1, x2, y2, w2, h2):
+that takes in two rectangles. The first one rectangle 1 is represented by x1, y1, w1, h1, where x1 and y1 are the coordinates of the top-left corner of the rectangle, and w1 is its width and h1 is its height. The second rectangle rectangle 2 is represented in a similar manner with the last 4 parameters. Your function should return True if rectagle 1 is inside rectangle 2, and False otherwise. The edges of the inner rectangle are allowed to touch the edges of the outer one, and it is still considered as being inside.
+
+7. Overlapping rectangles
+
+Similarly to question 6 above, we will define a function that takes two rectangles. Use the following signature:
+
+def overlap(x1, y1, w1, h1, x2, y2, w2, h2):
+This time however the function should return True if there are any overlaps between the two rectangles. Even if the outer edges of the rectangles are just touching, that is still considered overlap.
+
+For the auto grader of this assignment to work correctly, you have to define every function with the signature we have provided above. For convenience, here is a complete listing of all function signatures that you can paste in your lab3.py file.
+
+def pointInRect (x, y, rx, ry, rw, rh):
+    return False
+
+
+def rectInRect(x1, y1, w1, h1, x2, y2, w2, h2):
+    return False
+
+
+def overlap(x1, y1, w1, h1, x2, y2, w2, h2):
+    return False
+
+
+def canDonateBlood(donor, recipient):
+    return False
+
+
+def wages(hours, rate):
+    return 0
+
+def leap(year):
+    return False
+
+
+def daysInMonth(month, year):
+    0
+
+if __name__ == "__main__":
+
+    print ("Testing ground")
+    # You can test your functions here

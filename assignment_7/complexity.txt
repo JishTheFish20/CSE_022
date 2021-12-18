@@ -1,0 +1,31 @@
+_______TIME COMPLEXITY________
+
+    Exercise #2
+        key: n = length of fines, d = length of dictionary, a = time it takes to run the append function
+
+        assumptions: any math, varible creation and value setting all takes constant time. f(n) = 1
+
+        Complexity: 3 + 2n + ad
+
+        Explanation: 
+            My function starts by creating three diffrent variables a dictionary names "fineHolder", a varible named "payment" and a list named "newFines", since I do not know how long it takes to create each of these varibles I assume for now it takes constant time "1". And since all of these statments are on the same indentation we will add their time up. Which gives us (f(n) = 3)
+
+            Next I created a for loop which goes through the length of the fines list, with each value in the fines list my function uses a "if else" statment to see if the name of the person currently paying the fine already has thier name in fineHolder, if they do then I will add their current fine to their previous fine. Otherwise I will put their name and fine in the dictionary. the for loop with take n time and the "if else" will take constant time since it is only one check it needs to make, inside the "if" I set 2 values thus it takes f(n) = 2 time and the "else" only sets one value thus f(n) = 1, because the "if else" is nested within the for loop we will multiply the time it takes to go through the for loop by the time it takes to go through the "if else". Which gives us f(n) = 2n
+
+            Finally I need to convert my dictionary to a list, so I have a for loop which is length d and then appends each value in the dictionary to the newFines list this takes a time which we then multiply by d. Which gives us f(n) = ad 
+
+            We add all of these parts together since they are on the same indentation giving us f(n) = 3 + 2n + ad
+
+    Exercise #4
+        key: n = length of customerList
+
+        assumptions: any math, varible creation and value setting all takes constant time. f(n) = 1
+
+        Complexity: 2 + 2(n-1)((n!) - 1)
+
+        Explanation: 
+            My function starts by creating two variables "bestPair" and "bestCost". We add thier time together since they are on the same indentation we add their time together, which gives us (f(n) = 2)
+
+            Next I created a for loop which goes through the length of the customer list which takes n-1 time,being n minus one, because Im using 2 pointers. Then I have a nested for loop which checks every other person except the current person we are checking with the previous for loop. Next I have a nested if statment to check if the current pair gives a greater value then the last greatest pair which takes n! -1 time, if it is then  I set the bestPair and bestCost to the current pair.We multiply all these nested times by each other, Which gives us f(n) = 2(n-1)((n!) - 1) 
+
+            We add all of these parts together since they are on the same indentation giving us f(n) = 2 + 2(n-1)((n!) - 1)
